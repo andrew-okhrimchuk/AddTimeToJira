@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import top.okhrimchuk.addTimeToJira.data.Data;
 import top.okhrimchuk.addTimeToJira.exeption.ValidationExeption;
 import top.okhrimchuk.addTimeToJira.parser.Parser;
-import top.okhrimchuk.addTimeToJira.parser.ParserI;
-import top.okhrimchuk.addTimeToJira.send.SenderApacheHttp;
-import top.okhrimchuk.addTimeToJira.validation.JsonValidator;
+import top.okhrimchuk.addTimeToJira.parser.Parsers;
+import top.okhrimchuk.addTimeToJira.http.SenderHttp;
 import top.okhrimchuk.addTimeToJira.validation.Validator;
+import top.okhrimchuk.addTimeToJira.validation.Validators;
 import java.io.IOException;
 import java.util.Map;
 
@@ -16,12 +16,12 @@ public class App {
 
     public static void main(String[] args) throws ValidationExeption {
         Data data = new Data();
-        ParserI parser = new Parser();
-        Validator validator = new JsonValidator();
-        SenderApacheHttp sender = new SenderApacheHttp();
+        Parsers parser = new Parser();
+        Validators validators = new Validator();
+        SenderHttp sender = new SenderHttp();
 
         String line = data.getdata();
-        boolean isValid = validator.validate(line);
+        boolean isValid = validators.validate(line);
 
         if (isValid) {
             try {

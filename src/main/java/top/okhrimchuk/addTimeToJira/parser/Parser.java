@@ -12,17 +12,18 @@ import java.util.Locale;
 import java.util.Map;
 
 @Slf4j
-public class Parser implements ParserI {
+public class Parser implements Parsers {
     public final String format = "H'H' m'M'";
 
     @Override
     public Map parse (String param)  throws ValidationExeption {
-        Map <String, String> map = new HashMap<>();
-        JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObj;
         String id;
+        JSONObject jsonObj;
         String description;
         LocalTime localTimeObj;
+
+        JSONParser jsonParser = new JSONParser();
+        Map <String, String> map = new HashMap<>();
 
         try {
             jsonObj = (JSONObject) jsonParser.parse(param);
