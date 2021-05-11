@@ -25,7 +25,7 @@ public class App {
 
         if (isValid) {
             try {
-                Map map = parser.parse(line);
+                Map <String, String> map = parser.parse(line);
                 boolean res = sender.send(map);
                 log.info(res ? "Added succes": "Added unsucces");
             } catch (IOException e) {

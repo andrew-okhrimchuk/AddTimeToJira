@@ -16,7 +16,7 @@ public class Parser implements Parsers {
     public final String format = "H'H' m'M'";
 
     @Override
-    public Map parse (String param)  throws ValidationExeption {
+    public Map <String, String> parse (String param)  throws ValidationExeption {
         String id;
         JSONObject jsonObj;
         String description;
